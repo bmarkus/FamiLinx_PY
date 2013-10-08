@@ -1,0 +1,51 @@
+Python interface to Familinx
+============================
+Python scripts in this directory provide an interface to the database Familinx.
+The interface is wrapped by the FamilinxUI.py file.
+
+To get started we have prepared a script that uses the interface and calculates pairwise kinship scores for two individuals selected by the user.
+If this operation fails the script will try to troubleshoot the problem and print to the screen output for each stage.
+Make sure you install the dependent python libraries before trying this (see below).
+To run the script type the following in a Unix shell:
+>> python pwIBDscript.py -i 1,2
+...
+For help type  
+>> python pwIBDscript.py -h 
+
+-----------------------------------------------------------------------------
+In order to use the interface directly start python and type:
+>> import FamilinxUI
+>> ?FamilinxUI
+	This Module serves as an interface to the Familinx MySQL database
+	It uses python modules from: libs/
+	... (more help content)
+
+>> FamilinxUI.Getter.getParents(1) # getting the parents of individual 1 
+[4, 5]
+
+More examples are provided in the documentation of the modules and functions.
+>> ?familinxUI.Getter # etc.
+
+
+Dependencies
+============
+	Python 2.6.5 or above
+	MySQLdb 1.2.2. or above (http://mysql-python.sourceforge.net/)	
+	NumPy 1.6.2 or above (http://www.numpy.org/)
+
+
+Configuring (Advanced)
+======================
+The configuration file that allows the python interface to connect to the MySQL database is: libs/__init__.py
+
+Configuring the python interface with the database: 
+*) Make sure you have a valid user name with privileges to access the MySQL database. 
+*) The database name, user name and password for accessing the database are hard-coded in the configuration file.
+
+For example, suppose the MySQL database was named "familinx", and the user "obama" has access to this database with password: "whitehouse".
+Then, the configuration file should look like this:
+DATABASE='familinx'
+USER='obama'
+PASSWORD='whitehouse'
+
+

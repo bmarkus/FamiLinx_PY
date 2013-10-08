@@ -1,0 +1,24 @@
+Changes from 2.1
+================
+
+- Fixed a bug in the algorithm that prunes away unnecessary parts of
+  the pedigree. The bug could be triggered when the number of individuals
+  that are eliminated is relatively large (a substantial fraction of the
+  size of the pedigree).
+  
+
+Changes from 2.0.2
+==================
+
+- Now can use 64 bit addressing on 64 bit operating systems, so you
+  can use oodles of memory (but only if you have oodles of RAM). This
+  assumes that the compiler uses the LP64 model where data types
+  'long' and 'pointer' are 64 bits but 'int' is 32 bits (gcc behaves
+  this way). Compile using 'make 64'.
+
+Changes from 2.0.1
+==================
+
+- Now, the program checks the pedigree for non-founders who have
+  one known and one unknown parent and fails with an error message
+  if this occurs.
